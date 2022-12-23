@@ -24,7 +24,7 @@
             var rng = new Random();
             Name = name;
             Surname = surname;
-            Score = (rng.NextDouble() + 1) * 10;
+            Score = 1 + ((10 - 1) * rng.NextDouble());
             GamesPlayed = (uint)rng.Next(1, 100);
             GamesWon = (uint)rng.Next(1, (int)GamesPlayed);
         }
