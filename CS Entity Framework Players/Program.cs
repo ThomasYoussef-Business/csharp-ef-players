@@ -5,5 +5,6 @@ using CS_Entity_Framework_Players;
 
 using var db = new PlayersDbContext();
 
-db.Players.Where(p => p.Name.Contains("Thomas")).First().Name = "Tommy";
+var myPlayer = db.Players.First();
+db.Remove(myPlayer);
 db.SaveChanges();
