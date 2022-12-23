@@ -1,23 +1,33 @@
 ﻿namespace CS_Entity_Framework_Players {
     public class Player {
-		// CAMPI
+        // CAMPI
+        private uint gamesWon;
+
+        // PROPRIETÀ
+        [Key]
+        public uint PlayerId { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public uint Score { get; set; }
+        public uint GamesPlayed { get; set; }
+        public uint GamesWon {
+            get => gamesWon;
+            set => gamesWon = ValidGamesWon(value);
+        }
+
+        // RELAZIONI
 
 
-		// PROPRIETÀ
-		public int PlayerId { get; set; }
-		public string Name { get; set; }
-		public string Surname { get; set; }
-		public int Score { get; set; }
-		public int GamesPlayed { get; set; }
-		public int GamesWon { get; set; }
-
-		// RELAZIONI
+        // COSTRUTTORI
 
 
-		// METODI PUBBLICI
+        // METODI PRIVATI
+        private uint ValidGamesWon(uint value) {
+            if (value > GamesPlayed) {
+                throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(value)} cannot be greaten than {nameof(GamesPlayed)}.");
+            }
 
-
-		// METODI PRIVATI
-
-	}
+            return value;
+        }
+    }
 }
