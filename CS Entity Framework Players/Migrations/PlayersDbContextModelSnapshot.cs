@@ -49,7 +49,7 @@ namespace CSEntityFrameworkPlayers.Migrations
 
                     b.HasKey("PlayerId");
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", (string)null);
                 });
 #pragma warning restore 612, 618
         }
