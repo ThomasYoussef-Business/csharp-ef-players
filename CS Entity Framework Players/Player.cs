@@ -24,7 +24,8 @@
         // METODI PRIVATI
         private uint ValidGamesWon(uint value) {
             if (value > GamesPlayed) {
-                throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(value)} cannot be greaten than {nameof(GamesPlayed)}.");
+                throw new ArgumentOutOfRangeException(nameof(value),
+                                                      $"{nameof(value)} cannot be greaten than {nameof(GamesPlayed)}.");
             }
 
             return value;
