@@ -3,8 +3,6 @@ global using System.ComponentModel.DataAnnotations;
 global using System.ComponentModel.DataAnnotations.Schema;
 using CS_Entity_Framework_Players;
 
-using var db = new PlayersDbContext();
-
 //db.Add(new Player("Thomas", "Youssef"));
 //db.SaveChanges();
 
@@ -19,3 +17,19 @@ using var db = new PlayersDbContext();
 //db.Remove(myPlayer);
 //db.SaveChanges();
 
+using var db = new PlayersDbContext();
+
+var thomas = new Player("Thomas", "Youssef");
+var alessio = new Player("Alessio", "Cherici");
+var erika = new Player("Erika", "Rizzi");
+
+var squadraDiscord = new Team() {
+    Name = "Squadra Discord",
+    City = "Milan",
+    Players = new List<Player> { thomas, alessio, erika },
+    Trainer = "Bryan Lucchetta",
+    Colors = "Rosso e rosa"
+};
+
+db.Add(squadraDiscord);
+db.SaveChanges();
