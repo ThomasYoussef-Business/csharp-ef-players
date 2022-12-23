@@ -2,6 +2,7 @@
     public class Player {
         // CAMPI
         private uint gamesWon;
+        private double score;
 
         // PROPRIETÀ
         [Key]
@@ -9,7 +10,11 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         [Precision(5, 3)]
-        public double Score { get; set; }
+        public double Score {
+            get { return score; }
+            set { score = ValidScore(value); }
+        }
+
         public uint GamesPlayed { get; set; }
         public uint GamesWon {
             get => gamesWon;
@@ -30,6 +35,13 @@
         }
 
         // METODI PRIVATI
+        private static double ValidScore(double value) {
+            if (value is < 1 or > 10) {
+                throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(value)} can only be with 1 and 10. Received {value} instead.");
+            }
+
+            return value;
+        }
         private uint ValidGamesWon(uint value) {
             if (value > GamesPlayed) {
                 throw new ArgumentOutOfRangeException(nameof(value),
