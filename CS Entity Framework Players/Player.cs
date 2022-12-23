@@ -22,7 +22,7 @@
         }
 
         // RELAZIONI
-
+        public Team Team { get; set; }
 
         // COSTRUTTORI
         public Player(string name, string surname) {
